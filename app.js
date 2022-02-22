@@ -20,6 +20,9 @@ const express = require('express'),
             store: store
         })
     );
+    app.use(bodyParser.urlencoded({
+        extended: false
+    }));
     app.use((req,res,next)=>{
         req.session.user="user1"
         next()
