@@ -32,6 +32,7 @@ const express = require('express'),
     app.post('/device/:id',(req,res)=>{
         const deviceId=req.params.id
         console.log(deviceId)
+        console.log(req.body)
         res.send('ok')
     })
    
