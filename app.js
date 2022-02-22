@@ -24,8 +24,15 @@ const express = require('express'),
         req.session.user="user1"
         next()
     })
-    app.use((req,res)=>{
-        res.send('server is up bitch!')
+    app.get('/device/:id',(req,res)=>{
+        const deviceId=req.params.id
+        console.log(deviceId)
+        res.send('ok')
+    })
+    app.post('/device/:id',(req,res)=>{
+        const deviceId=req.params.id
+        console.log(deviceId)
+        res.send('ok')
     })
    
     mongoose.connect(MONGODB_URI)
