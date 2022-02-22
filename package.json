@@ -1,0 +1,28 @@
+{
+  "name": "shcms_server",
+  "version": "1.0.0",
+  "description": "Smart home chain management system MGM ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaanansari26/SHCMS_server.git"
+  },
+  "author": "Amaan, Sameed, Gulsaba & vaibhav",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amaanansari26/SHCMS_server/issues"
+  },
+  "homepage": "https://github.com/amaanansari26/SHCMS_server#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "connect-mongodb-session": "^3.1.1",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.2.3"
+  }
+}
