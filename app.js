@@ -30,7 +30,7 @@ const express = require('express'),
    
     mongoose.connect(MONGODB_URI)
     .then(result => {
-        app.listen(80, () => {
+        app.listen(process.env.PORT || 80, () => {
             console.log('80isUP!')
         });
     })
