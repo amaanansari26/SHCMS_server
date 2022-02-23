@@ -1,23 +1,23 @@
 const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-const deviceOut= new Schema({
+const soldDevice= new Schema({
     deviceId:{
         type:String,
         required:true
     },
-    temp:{
+    secretCode:{
         type:String,
         required:true
     },
-    humid:{
-        type:String,
+    isActivated:{
+        type:Boolean,
         required:true
     },
-    emergency:{
+    userEmail:{
         type:String,
-        required:true
+        
     }
 });
 
-module.exports = mongoose.model('deviceOut', deviceOut);
+module.exports = mongoose.model('soldDevice', soldDevice);

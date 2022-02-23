@@ -1,11 +1,17 @@
+//Dependencies///////////////////////////////////////////////////////////////////
 const express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     session = require('express-session'),
     path=require('path'),
+    Devicein = require('./models/devicein')
+    DeviceOut= require('./models/deviceOut')
     MongoDBStore = require('connect-mongodb-session')(session),
-    MONGODB_URI = 'mongodb+srv://amngithub:9013393120@cluster0.mxpww.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-    app = express();
+    MONGODB_URI = 'mongodb+srv://amngithub:9013393120@cluster0.mxpww.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+/////////////////////////////////////////////////////////////////////////////
+
+//config///////////////////////////////////////////////////////////////////////
+    app = express(),
 
     store = new MongoDBStore({
         uri: MONGODB_URI,
@@ -28,6 +34,11 @@ const express = require('express'),
         req.session.user="user1"
         next()
     })
+//////////////////////////////////////////////////////////////////////////////////
+
+
+
+//routes//////////////////////////////////////////////////////////////////////////
     app.get('/device/:id',(req,res)=>{
         const deviceId=req.params.id
         console.log(deviceId)
@@ -39,7 +50,14 @@ const express = require('express'),
         console.log(req.body)
         res.send('ok')
     })
-   
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+//footer connection/////////////////////////////////////////////////////////////
     mongoose.connect(MONGODB_URI)
     .then(result => {
         app.listen(process.env.PORT || 80, () => {
@@ -49,3 +67,4 @@ const express = require('express'),
     .catch(err => {
         console.log(err);
     });
+/////END//////////////////////////////////////////////////////////////////////
