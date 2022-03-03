@@ -56,16 +56,18 @@ const express = require('express'),
 
 
 //routes//////////////////////////////////////////////////////////////////////////
-    // app.get('/device/:id',(req,res)=>{
-    //     const deviceId=req.params.id
-    //     SoldDevice.findOne({"deviceId":deviceId}).then(device=>{
-    //         if(device && device.isActivated){
-    //             return res.send({'info':'Inf','device':device})
-    //         }
-    //         return res.send('Unauthorised access')
-    //     }).catch(err)
+    app.get('/device/:id',(req,res)=>{
+        const deviceId=req.params.id
+       Devicein.findOne({'deviceId':deviceId}).then(d=>{
+           if(!d)=>{
+               return res.send('err')
+               
+           }
+           const outgoing={"s0":d.s0,"s1":d.s1,"s2":d.s2,"s3":d.s3,"s4":d.s4,"s5":d.s5}
+           res.send({JSON.stringify(outgoing)})
+       }).catch(err)
         
-    // })
+    })
     app.post('/device/:id',(req,res)=>{
         const deviceId=req.params.id
         console.log(deviceId)
