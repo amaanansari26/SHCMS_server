@@ -59,7 +59,7 @@ const express = require('express'),
     app.get('/device/:id',(req,res)=>{
         const deviceId=req.params.id
        Devicein.findOne({'deviceId':deviceId}).then(d=>{
-           if(!d)=>{
+           if(!d){
                return res.send('err')
                
            }
