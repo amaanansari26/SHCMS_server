@@ -71,6 +71,15 @@ const express = require('express'),
     app.post('/device/:id',(req,res)=>{
         const deviceId=req.params.id
         console.log(deviceId)
+        DeviceOut.findOne({'deviceId':deviceId}).then(d=>{
+            if(!d){
+                res.send('Unauthorised access')
+            }
+            d.temp=req.body.temp
+            d.humid=req.body.humid
+            d.save().then().catch(err)
+            
+        }).catch(err)
         console.log(req.body)
         res.send('ok')
     })
