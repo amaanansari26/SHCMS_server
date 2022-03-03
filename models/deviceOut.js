@@ -3,20 +3,19 @@ const mongoose = require('mongoose'),
 
 const deviceOut= new Schema({
     deviceId:{
-        type:String,
+        type:Number,
         required:true
     },
     temp:{
-        type:String,
+        type:Number,
         required:true
     },
     humid:{
-        type:String,
+        type:Number,
         required:true
     },
     emergency:{
-        type:String,
-        required:true
+        type:Boolean
     }
 });
 

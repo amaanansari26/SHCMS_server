@@ -3,23 +3,31 @@ const mongoose = require('mongoose'),
 
 const deviceIn= new Schema({
     deviceId:{
-        type:String,
+        type:Number,
         required:true
     },
     s0:{
-        type:String,
+        type:Boolean,
         required:true
     },
     s1:{
-        type:String,
+        type:Boolean,
         required:true
     },
     s2:{
-        type:String,
+        type:Boolean,
         required:true
     },
     s3:{
-        type:String,
+        type:Boolean,
+        required:true
+    },
+    s4:{
+        type:Boolean,
+        required:true
+    },
+    s5:{
+        type:Boolean,
         required:true
     }
 });
