@@ -64,7 +64,7 @@ const express = require('express'),
                
            }
            const outgoing={"s0":d.s0,"s1":d.s1,"s2":d.s2,"s3":d.s3,"s4":d.s4,"s5":d.s5}
-           res.send({JSON.stringify(outgoing)})
+           res.send(JSON.stringify(outgoing))
        }).catch(err)
         
     })
