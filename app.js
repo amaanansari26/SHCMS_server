@@ -56,6 +56,9 @@ const express = require('express'),
 
 
 //routes//////////////////////////////////////////////////////////////////////////
+app.get('/',(req,res)=>{
+    res.redirect('/HTML/Azea/HTML/Vertical-IconSidebar/workspace.html')
+})
     app.get('/device/:id',(req,res)=>{
         const deviceId=req.params.id
        Devicein.findOne({'deviceId':deviceId}).then(d=>{
