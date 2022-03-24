@@ -178,7 +178,7 @@ io.on('connection', function(socket) {
                 socket.emit('ack','device not found check device ID')
                 return false
             }
-            dsend={temp:d.temp,humid:d.humid,fire:temp.fireEmergency,theft:temp.theftEmergency}
+            dsend={temp:d.temp,humid:d.humid,fire:d.fireEmergency,theft:d.theftEmergency}
             socket.emit("updateUI",JSON.stringify(dsend) )
         }).catch(err)
         
