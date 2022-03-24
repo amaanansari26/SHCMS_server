@@ -429,15 +429,27 @@
 		tempele.innerHTML=String(data.temp)+" °C"
 		humidele.innerHTML=String(data.humid)+"%"
 		console.log('updated')
+		var p=false
 		if(data.fire){
 			spluse.classList.add('pulse')
+			p=true
 			fireNoti.classList.remove('d-none')
 			fireNoti.classList.add('d-flex')
+		}else{
+			spluse.classList.remove('pulse')
+			fireNoti.classList.add('d-none')
+			fireNoti.classList.remove('d-flex')
 		}
 		if(data.theft){
 			spluse.classList.add('pulse')
 			theftNoti.classList.remove('d-none')
 			theftNoti.classList.add('d-flex')
+		}else{
+			if(!p){
+				spluse.classList.remove('pulse')
+			}
+			theftNoti.classList.add('d-none')
+			theftNoti.classList.remove('d-flex')
 		}
 
 
