@@ -14,7 +14,10 @@ const deviceOut= new Schema({
         type:Number,
         required:true
     },
-    emergency:{
+    fireEmergency:{
+        type:Boolean
+    },
+    theftEmergency:{
         type:Boolean
     }
 });

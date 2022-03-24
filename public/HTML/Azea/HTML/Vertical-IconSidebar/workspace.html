@@ -421,9 +421,10 @@
 			const data={deviceId:846,status:[mybtn[0].status,mybtn[1].status,mybtn[2].status,mybtn[3].status,mybtn[4].status,mybtn[5].status]}
 			socket.emit('buttons',JSON.stringify(data))
 		}
-	const getTempHumid=()=>{
+	const getupdateUI=()=>{
 		
-		socket.emit('getTempHumid','{"deviceId":846}')
+		socket.emit('getupdateUI','{"deviceId":846}')
+
 	}
 	const updatebutton=()=>{
 		socket.emit('getupdatebutton','{"deviceId":846}')
@@ -431,9 +432,10 @@
 		
 		
 		// socket.emit('getTempHumid','dsa')
-		socket.on('tempHumid',(data)=>{
+		socket.on('updateUI',(data)=>{
 		
         data=JSON.parse(data)
+		console.log("fire:",data.fire," Theft:", data.theft)
 		tempele.innerHTML=String(data.temp)+" °C"
 		humidele.innerHTML=String(data.humid)+"%"
 		console.log('updated')
@@ -468,7 +470,7 @@
          })
 getTempHumid()
 updatebutton()
-		 setInterval(function () {getTempHumid()}, 2000);
+		 setInterval(function () {getupdateUI()}, 2000);
 
 	</script>
 </html>

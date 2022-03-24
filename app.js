@@ -170,7 +170,7 @@ io.on('connection', function(socket) {
         }).catch(err)
 
     })
-    socket.on('getTempHumid',(data)=>{
+    socket.on('getupdateUI',(data)=>{
         data=JSON.parse(data)
         console.log(data)
         DeviceOut.findOne({"deviceId":data.deviceId}).then((d)=>{
@@ -178,8 +178,8 @@ io.on('connection', function(socket) {
                 socket.emit('ack','device not found check device ID')
                 return false
             }
-            dsend={temp:d.temp,humid:d.humid}
-            socket.emit("tempHumid",JSON.stringify(dsend) )
+            dsend={temp:d.temp,humid:d.humid,fire:temp.fireEmergency,theft:temp.theftEmergency}
+            socket.emit("updateUI",JSON.stringify(dsend) )
         }).catch(err)
         
 
