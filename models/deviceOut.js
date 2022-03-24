@@ -15,10 +15,12 @@ const deviceOut= new Schema({
         required:true
     },
     fireEmergency:{
-        type:Boolean
+        type:Boolean,
+        required:true
     },
     theftEmergency:{
-        type:Boolean
+        type:Boolean,
+        required:true
     }
 });
 
