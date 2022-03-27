@@ -486,7 +486,10 @@
          })
 getupdateUI()
 updatebutton()
-		 setInterval(function () {getupdateUI()}, 2000);
+		 setInterval(function () {
+			 getupdateUI()
+			 updatebutton()
+		}, 2000);
 
 	</script>
 </html>
