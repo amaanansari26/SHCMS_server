@@ -71,6 +71,21 @@ app.get('/',(req,res)=>{
        }).catch(err)
         
     })
+    app.get('/device/:id/reset',(req,res)=>{
+        const deviceId=req.params.id
+       Devicein.findOne({'deviceId':deviceId}).then(d=>{
+           if(!d){
+               return res.send('err')
+               
+           }
+          d.s5=false
+          d.save().then(dd=>{
+            res.send('ok')
+          }).catch(err)
+           
+       }).catch(err)
+        
+    })
     app.post('/device/:id',(req,res)=>{
         const deviceId=req.params.id
         console.log(deviceId)
@@ -80,6 +95,8 @@ app.get('/',(req,res)=>{
             }
             d.temp=req.body.temp
             d.humid=req.body.humid
+            d.fireEmergency=req.body.fireEmergency
+            d.theftEmergency=req.body.theftEmergency
             d.save().then().catch(err)
             
         }).catch(err)
