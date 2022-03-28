@@ -228,7 +228,7 @@ io.on('connection', function(socket) {
     })
     socket.on('theft',(data)=>{
         
-        Deviceout.findOne({"deviceId":"846"}).then((d)=>{
+        DeviceOut.findOne({"deviceId":"846"}).then((d)=>{
             if(!d){
                 socket.emit('ack','device not found check device ID')
                 return false
