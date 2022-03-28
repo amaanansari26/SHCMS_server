@@ -78,12 +78,22 @@ app.get('/',(req,res)=>{
                return res.send('err')
                
            }
+
           d.s5=false
           d.save().then(dd=>{
             res.send('ok')
           }).catch(err)
            
        }).catch(err)
+       DeviceOut.findOne({'deviceId':deviceId}).then(d=>{
+        if(!d){
+            res.send('Unauthorised access')
+        }
+        
+        d.theftEmergency=false
+        d.save().then().catch(err)
+        
+    }).catch(err)
         
     })
     app.post('/device/:id',(req,res)=>{
@@ -96,7 +106,7 @@ app.get('/',(req,res)=>{
             d.temp=req.body.temp
             d.humid=req.body.humid
             d.fireEmergency=req.body.fireEmergency
-            d.theftEmergency=req.body.theftEmergency
+            //d.theftEmergency=req.body.theftEmergency
             d.save().then().catch(err)
             
         }).catch(err)
@@ -212,6 +222,21 @@ io.on('connection', function(socket) {
             dsend={'s0':d.s0,'s1':d.s1,'s2':d.s2,'s3':d.s3,'s4':d.s4,'s5':d.s5}
             console.log(d)
             socket.emit("updatebutton",JSON.stringify(dsend) )
+        }).catch(err)
+        
+
+    })
+    socket.on('theft',(data)=>{
+        
+        Deviceout.findOne({"deviceId":"846"}).then((d)=>{
+            if(!d){
+                socket.emit('ack','device not found check device ID')
+                return false
+            }
+            d.theftEmergency=true
+            d.save()
+            
+            
         }).catch(err)
         
 

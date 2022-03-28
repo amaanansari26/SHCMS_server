@@ -300,7 +300,7 @@
 						<br>
 						<div class="row">
 							<div class="col">
-								<button onclick="buttonToggle(mybtn[4])" type="button" class="btn btn-danger btn-lg mb-1 h-130 w-100 mybtn">Lock</button>
+								<button onclick="lockbtnToggle(mybtn[4])" type="button" class="btn btn-danger btn-lg mb-1 h-130 w-100 mybtn">Lock</button>
 							</div>
 							<div class="col">
 								<button onclick="buttonToggle(mybtn[5])" type="button" class="btn btn-danger btn-lg mb-1 h-130 w-100 mybtn">Reset</button>
@@ -410,6 +410,25 @@
 			}
 			const data={deviceId:846,status:[mybtn[0].status,mybtn[1].status,mybtn[2].status,mybtn[3].status,mybtn[4].status,mybtn[5].status]}
 			socket.emit('buttons',JSON.stringify(data))
+		}
+		const lockbtnToggle=(btn)=>{
+			if(btn.className.split(' ').includes('btn-danger')){
+				btn.classList.remove('btn-danger')
+				btn.classList.add('btn-success')
+				btn.status=true
+				
+			}
+			else{
+				btn.classList.remove('btn-success')
+				btn.classList.add('btn-danger')
+				btn.status=false
+			}
+			const data={deviceId:846,status:[mybtn[0].status,mybtn[1].status,mybtn[2].status,mybtn[3].status,mybtn[4].status,mybtn[5].status]}
+			socket.emit('buttons',JSON.stringify(data))
+			setTimeout(()=>{
+				socket.emit('theft',"{}")
+			}, 7000);
+
 		}
 	const getupdateUI=()=>{
 		
